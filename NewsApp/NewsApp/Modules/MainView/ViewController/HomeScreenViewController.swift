@@ -32,17 +32,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 extension HomeScreenViewController {
@@ -71,7 +60,7 @@ extension HomeScreenViewController {
         cell?.setUpHeaderCell(title: viewModel.title[section])
         return cell
     }
-    /// method for set cell data
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let topNewsCell: TopNewsTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "Firstcell") as? TopNewsTableViewCell) else {
@@ -92,11 +81,9 @@ extension HomeScreenViewController {
             popularNewsCell.tag = indexPath.row+1
             DispatchQueue.global().async { [weak self] in
                 guard let weakSelf = self else { return }
-                // Fetch Image Data
                 if let urlImage = weakSelf.viewModel.newsDataModel.articles[indexPath.row+1].urlToImage, let url = URL(string: urlImage) {
                     if let data = try? Data(contentsOf: url) {
                         DispatchQueue.main.async {
-                            // Create Image and Update Image View
                             if popularNewsCell.tag == indexPath.row+1 {
                                 popularNewsCell.newsIcon.image = UIImage(data: data)
                             }
@@ -136,26 +123,14 @@ extension UIImageView {
     func loadFrom(URLAddress: String) {
         let url = URL(string: URLAddress)!
         DispatchQueue.global().async {
-            // Fetch Image Data
             if let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async { [weak self] in
                     guard let weakSelf = self else { return }
-                    // Create Image and Update Image View
+                    
                     weakSelf.image = UIImage(data: data)
                 }
             }
         }
     }
 }
-extension UIButton {
-    
-    /// `IBInspectable` borderWidth for UIView.
-    @IBInspectable var cornerRadius: CGFloat  {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-        }
-    }
-}
+

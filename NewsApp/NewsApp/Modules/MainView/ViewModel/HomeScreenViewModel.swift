@@ -13,7 +13,7 @@ class HomeScreenViewModel: HomeScreenViewModelInputs, HomeScreenViewModelOutputs
     var inputs: HomeScreenViewModelInputs { return self }
     var outputs: HomeScreenViewModelOutputs { return self }
     var newsDataModel: NewsModel!
-
+    
     /// `CloudServiceProtocol` for cloudService
     var cloudSyncService: CloudServiceProtocol {
         return DependencyContainer.resolveCloudService()

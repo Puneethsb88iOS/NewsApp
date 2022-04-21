@@ -16,9 +16,8 @@ class HomeScreenViewModelTests: XCTestCase {
         viewModelUndertest = HomeScreenViewModel()
         mockCloudService = MockCloudService()
         DependencyContainer.configureMockCloud(mockCloudService)
-       
     }
-
+    
     func testGetNewsSuccess() {
         //mockCloudService.getNewsResponseSuccess = false
         let expectation = XCTestExpectation(description: "GetNewsSuccess")

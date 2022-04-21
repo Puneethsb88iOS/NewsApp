@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 protocol CloudServiceProtocol {
     func getNews(url: String, completion: @escaping (Result<Data, Error>) -> Void)
 }

@@ -86,11 +86,9 @@ extension DetailNewsViewController: UITableViewDelegate, UITableViewDataSource  
             popularNewsCell.tag = indexPath.row
             DispatchQueue.global().async { [weak self] in
                 guard let weakSelf = self else { return }
-                // Fetch Image Data
                 if let urlImage = weakSelf.viewModel.newsDataModel.articles[indexPath.row].urlToImage, let url = URL(string: urlImage) {
                     if let data = try? Data(contentsOf: url) {
                         DispatchQueue.main.async {
-                            // Create Image and Update Image View
                             if popularNewsCell.tag == indexPath.row {
                                 popularNewsCell.newsIcon.image = UIImage(data: data)
                             }
@@ -105,6 +103,7 @@ extension DetailNewsViewController: UITableViewDelegate, UITableViewDataSource  
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0

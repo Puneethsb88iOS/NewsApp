@@ -14,7 +14,4 @@ class HeaderCell: UITableViewCell {
     func setUpHeaderCell(title: String) {
         headerTitle.text = title
     }
-
-  
-
 }

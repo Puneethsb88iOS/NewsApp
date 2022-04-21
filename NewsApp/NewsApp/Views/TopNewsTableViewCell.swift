@@ -8,7 +8,7 @@
 import UIKit
 
 class TopNewsTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
