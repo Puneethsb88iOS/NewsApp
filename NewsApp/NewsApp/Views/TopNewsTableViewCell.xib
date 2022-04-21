@@ -33,16 +33,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In 2011, were Maharashtra Andhashraddha Nirmoolan Samiti workers really arrested for Naxal links?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSF-Ei-GPU">
-                        <rect key="frame" x="25" y="232" width="317" height="131.5"/>
+                        <rect key="frame" x="25" y="232" width="317" height="102"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="102" id="1Ym-ER-wh3"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TxD-LT-fBu">
-                        <rect key="frame" x="19" y="352" width="322" height="136"/>
+                        <rect key="frame" x="19" y="328" width="322" height="160"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgm-xE-rtW">
-                                <rect key="frame" x="269" y="88" width="41" height="36"/>
+                                <rect key="frame" x="269" y="97" width="41" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="3UE-9q-O0d"/>
@@ -52,16 +55,21 @@
                                 <buttonConfiguration key="configuration" style="plain" image="BookMark">
                                     <color key="baseForegroundColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sze-wJ-ihy">
-                                <rect key="frame" x="6" y="5" width="309" height="79"/>
+                                <rect key="frame" x="6" y="0.0" width="309" height="84"/>
                                 <string key="text">Since the Pune police’s crackdown on Maoist organizations and naxal supporters, a lot is being discussed about the action taken against Naxalites during the UPA regime.Today, Chidambaram…</string>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                 <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUt-5o-fAe">
-                                <rect key="frame" x="8" y="93" width="60" height="26.5"/>
+                                <rect key="frame" x="8" y="101" width="60" height="26"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="wtL-qh-12G"/>
@@ -71,17 +79,23 @@
                                     <fontDescription key="titleFontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                     <color key="baseForegroundColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Pgm-xE-rtW" firstAttribute="top" secondItem="TxD-LT-fBu" secondAttribute="top" constant="88" id="1pJ-Pg-kLn"/>
-                            <constraint firstItem="MUt-5o-fAe" firstAttribute="top" secondItem="TxD-LT-fBu" secondAttribute="top" constant="93" id="Da1-qg-AZu"/>
+                            <constraint firstItem="MUt-5o-fAe" firstAttribute="top" secondItem="sze-wJ-ihy" secondAttribute="bottom" constant="17" id="Onq-HB-iQq"/>
+                            <constraint firstItem="MUt-5o-fAe" firstAttribute="centerY" secondItem="Pgm-xE-rtW" secondAttribute="centerY" constant="-1" id="TQV-Xp-sy5"/>
                             <constraint firstAttribute="trailing" secondItem="sze-wJ-ihy" secondAttribute="trailing" constant="7" id="aK1-Hb-LXQ"/>
                             <constraint firstItem="MUt-5o-fAe" firstAttribute="leading" secondItem="TxD-LT-fBu" secondAttribute="leading" constant="8" id="j3L-u4-Jt4"/>
+                            <constraint firstItem="Pgm-xE-rtW" firstAttribute="top" secondItem="sze-wJ-ihy" secondAttribute="bottom" constant="13" id="keJ-Zr-kEW"/>
                             <constraint firstItem="sze-wJ-ihy" firstAttribute="leading" secondItem="TxD-LT-fBu" secondAttribute="leading" constant="6" id="oGI-Ai-Wyf"/>
-                            <constraint firstAttribute="bottom" secondItem="Pgm-xE-rtW" secondAttribute="bottom" constant="12" id="rGw-86-CLt"/>
+                            <constraint firstAttribute="bottom" secondItem="Pgm-xE-rtW" secondAttribute="bottom" constant="27" id="rGw-86-CLt"/>
                             <constraint firstAttribute="trailing" secondItem="Pgm-xE-rtW" secondAttribute="trailing" constant="12" id="rtu-n9-kUc"/>
-                            <constraint firstItem="sze-wJ-ihy" firstAttribute="top" secondItem="TxD-LT-fBu" secondAttribute="top" constant="5" id="z2W-r6-HFG"/>
+                            <constraint firstItem="sze-wJ-ihy" firstAttribute="top" secondItem="TxD-LT-fBu" secondAttribute="top" id="z2W-r6-HFG"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -91,7 +105,7 @@
                     <constraint firstAttribute="trailing" secondItem="wSF-Ei-GPU" secondAttribute="trailing" constant="20" symbolic="YES" id="Sql-Hb-A94"/>
                     <constraint firstAttribute="trailing" secondItem="TxD-LT-fBu" secondAttribute="trailing" constant="21" id="VjU-M1-8me"/>
                     <constraint firstItem="wSF-Ei-GPU" firstAttribute="top" secondItem="SJv-Re-BkZ" secondAttribute="bottom" id="XJh-WB-ckH"/>
-                    <constraint firstItem="TxD-LT-fBu" firstAttribute="top" secondItem="wSF-Ei-GPU" secondAttribute="bottom" constant="-11.5" id="bcN-Ok-3vW"/>
+                    <constraint firstItem="TxD-LT-fBu" firstAttribute="top" secondItem="wSF-Ei-GPU" secondAttribute="bottom" constant="-6" id="bcN-Ok-3vW"/>
                     <constraint firstItem="wSF-Ei-GPU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="dQF-Kz-Aym"/>
                     <constraint firstItem="SJv-Re-BkZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="ekN-j6-ppz"/>
                     <constraint firstAttribute="bottom" secondItem="TxD-LT-fBu" secondAttribute="bottom" id="unb-CG-k7v"/>

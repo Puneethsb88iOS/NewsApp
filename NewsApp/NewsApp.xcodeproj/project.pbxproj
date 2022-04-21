@@ -12,6 +12,9 @@
 		8D2E05E72810FD880029926E /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E05E62810FD880029926E /* DependencyContainer.swift */; };
 		8D2E05EA28111AE50029926E /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E05E928111AE50029926E /* Date+String.swift */; };
 		8D2E05EC28111B100029926E /* AppContant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E05EB28111B100029926E /* AppContant.swift */; };
+		8D3B4C2E2811709400090723 /* HomeScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B4C2D2811709400090723 /* HomeScreenViewModelTests.swift */; };
+		8D3B4C31281172F000090723 /* MockCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B4C30281172F000090723 /* MockCloudService.swift */; };
+		8D3B4C332811762F00090723 /* MockDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B4C322811762F00090723 /* MockDependencyContainer.swift */; };
 		8DE23834280FD30C00D7B611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE23833280FD30C00D7B611 /* AppDelegate.swift */; };
 		8DE23836280FD30C00D7B611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE23835280FD30C00D7B611 /* SceneDelegate.swift */; };
 		8DE2383B280FD30C00D7B611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DE23839280FD30C00D7B611 /* Main.storyboard */; };
@@ -58,6 +61,9 @@
 		8D2E05E62810FD880029926E /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		8D2E05E928111AE50029926E /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		8D2E05EB28111B100029926E /* AppContant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContant.swift; sourceTree = "<group>"; };
+		8D3B4C2D2811709400090723 /* HomeScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelTests.swift; sourceTree = "<group>"; };
+		8D3B4C30281172F000090723 /* MockCloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCloudService.swift; sourceTree = "<group>"; };
+		8D3B4C322811762F00090723 /* MockDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDependencyContainer.swift; sourceTree = "<group>"; };
 		8DE23830280FD30C00D7B611 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE23833280FD30C00D7B611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DE23835280FD30C00D7B611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +151,15 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		8D3B4C2F281172E000090723 /* MockCloud */ = {
+			isa = PBXGroup;
+			children = (
+				8D3B4C30281172F000090723 /* MockCloudService.swift */,
+				8D3B4C322811762F00090723 /* MockDependencyContainer.swift */,
+			);
+			path = MockCloud;
+			sourceTree = "<group>";
+		};
 		8DE23827280FD30C00D7B611 = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +200,9 @@
 		8DE23849280FD30D00D7B611 /* NewsAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				8D3B4C2F281172E000090723 /* MockCloud */,
 				8DE2384A280FD30D00D7B611 /* NewsAppTests.swift */,
+				8D3B4C2D2811709400090723 /* HomeScreenViewModelTests.swift */,
 			);
 			path = NewsAppTests;
 			sourceTree = "<group>";
@@ -490,7 +507,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D3B4C332811762F00090723 /* MockDependencyContainer.swift in Sources */,
 				8DE2384B280FD30D00D7B611 /* NewsAppTests.swift in Sources */,
+				8D3B4C31281172F000090723 /* MockCloudService.swift in Sources */,
+				8D3B4C2E2811709400090723 /* HomeScreenViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

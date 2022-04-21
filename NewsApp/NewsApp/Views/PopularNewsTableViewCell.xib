@@ -56,6 +56,11 @@
                         <buttonConfiguration key="configuration" style="plain" image="BookMark">
                             <color key="baseForegroundColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-Jn-LZ4">
                         <rect key="frame" x="12" y="135" width="550" height="1"/>
@@ -79,6 +84,11 @@
                             <fontDescription key="titleFontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                             <color key="baseForegroundColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
                 <constraints>
@@ -103,8 +113,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="ndBookMark" destination="MQm-Zs-w0M" id="z2e-Af-NgW"/>
-                <outlet property="ndTV" destination="7Fn-4d-cYu" id="zM9-Ya-uHi"/>
                 <outlet property="newsIcon" destination="1LY-oQ-UX6" id="cTE-Bc-Knd"/>
                 <outlet property="newsSubTitle" destination="H6A-dm-3aB" id="LEQ-5c-IDW"/>
                 <outlet property="newsTitle" destination="vr9-fp-dEr" id="pX7-Bg-7Nv"/>

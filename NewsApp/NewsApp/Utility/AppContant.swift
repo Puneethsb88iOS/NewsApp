@@ -11,6 +11,4 @@ struct AppContant {
     /// String for `dateFormat`
     static let dateFormat = "yyyy-MM-dd"
     static let apiKey = "5b61e21bc6da41238f1e49e67721e958"
-    
-    
 }

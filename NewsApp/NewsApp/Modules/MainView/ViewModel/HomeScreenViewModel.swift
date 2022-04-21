@@ -7,48 +7,45 @@
 
 import UIKit
 
-class HomeScreenViewModel {
+class HomeScreenViewModel: HomeScreenViewModelInputs, HomeScreenViewModelOutputs, HomeScreenViewModelType {
     
+    let title = ["Top News", "Popular News"]
+    var inputs: HomeScreenViewModelInputs { return self }
+    var outputs: HomeScreenViewModelOutputs { return self }
     var newsDataModel: NewsModel!
-    
+
     /// `CloudServiceProtocol` for cloudService
     var cloudSyncService: CloudServiceProtocol {
         return DependencyContainer.resolveCloudService()
-    }
-    
-    func getMockNewsData() {
-        do {
-            if let bundlePath = Bundle.main.path(forResource: "MockJson",
-                                                 ofType: "json"),
-               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                newsDataModel = try JSONDecoder().decode(NewsModel.self,
-                                                    from: jsonData)
-            }
-        } catch {
-            print(error)
-        }
     }
     
     func getNewsDetails( completion: @escaping (Bool) -> Void) {
         cloudSyncService.getNews(url: "https://newsapi.org/v2/everything?q=tesla&from=\(Date().dateToString())&sortBy=publishedAt&apiKey=\(AppContant.apiKey)") { result in
             switch result {
             case .success(let data):
-                self.newsDataModel = self.parseJson(jsonData: data)
+                self.parseJson(jsonData: data)
                 completion(true)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                completion(false)
             }
         }
     }
     
-    private func parseJson(jsonData: Data) -> NewsModel? {
+    func parseJson(jsonData: Data) {
         do {
-            let decodedData = try JSONDecoder().decode(NewsModel.self, from: jsonData)
-            print(decodedData)
-            return decodedData
-        } catch {
-            print("decode error")
-        }
-        return nil
+            newsDataModel = try JSONDecoder().decode(NewsModel.self, from: jsonData)
+        } catch {}
     }
+}
+
+protocol HomeScreenViewModelInputs {}
+
+protocol HomeScreenViewModelOutputs {
+    func getNewsDetails( completion: @escaping (Bool) -> Void)
+    func parseJson(jsonData: Data)
+}
+
+protocol HomeScreenViewModelType {
+    var inputs: HomeScreenViewModelInputs { get }
+    var outputs: HomeScreenViewModelOutputs { get }
 }

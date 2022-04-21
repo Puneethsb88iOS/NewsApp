@@ -7,15 +7,30 @@
 
 import UIKit
 
-class HomeScreenViewController: UITableViewController {
+class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let viewModel = HomeScreenViewModel()
+    @IBOutlet weak var newsTableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "PopularNewsTableViewCell", bundle: nil), forCellReuseIdentifier: "PopularNewsTableViewCell")
-        tableView.register(UINib(nibName: "TopNewsTableViewCell", bundle: nil), forCellReuseIdentifier: "Firstcell")
-        viewModel.getMockNewsData()
+        updateDisplay()
+        bind()
+    }
+    
+    private func updateDisplay() {
+        newsTableview.register(UINib(nibName: "PopularNewsTableViewCell", bundle: nil), forCellReuseIdentifier: "PopularNewsTableViewCell")
+        newsTableview.register(UINib(nibName: "TopNewsTableViewCell", bundle: nil), forCellReuseIdentifier: "Firstcell")
+    }
+    
+    private func bind() {
+        viewModel.outputs.getNewsDetails { updated in
+            DispatchQueue.main.async {
+                self.newsTableview.delegate = self
+                self.newsTableview.dataSource = self
+                self.newsTableview.reloadData()
+            }
+        }
     }
     
     /*
@@ -33,37 +48,38 @@ class HomeScreenViewController: UITableViewController {
 extension HomeScreenViewController {
     
     /// method for set numberOfSections
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }
         return viewModel.newsDataModel.articles.count - 1
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     /// method for set heightForRowAt
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 450
         }
         return UITableView.automaticDimension
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let title = ["Top News", "Popular News"]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as? HeaderCell
-        cell?.setUpHeaderCell(title: title[section])
+        cell?.setUpHeaderCell(title: viewModel.title[section])
         return cell
     }
     /// method for set cell data
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let topNewsCell: TopNewsTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "Firstcell") as? TopNewsTableViewCell) else {
                 return UITableViewCell()
             }
-            topNewsCell.topImage.loadFrom(URLAddress: viewModel.newsDataModel.articles[indexPath.section].urlToImage)
+            if let urlImage = viewModel.newsDataModel.articles[indexPath.section].urlToImage {
+                topNewsCell.topImage.loadFrom(URLAddress: urlImage)
+            }
             topNewsCell.title.text = viewModel.newsDataModel.articles[indexPath.section].title
             topNewsCell.subTitle.text = viewModel.newsDataModel.articles[indexPath.section].description
             topNewsCell.selectionStyle = .none
@@ -77,12 +93,13 @@ extension HomeScreenViewController {
             DispatchQueue.global().async { [weak self] in
                 guard let weakSelf = self else { return }
                 // Fetch Image Data
-                let url = URL(string: weakSelf.viewModel.newsDataModel.articles[indexPath.row+1].urlToImage)!
-                if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        // Create Image and Update Image View
-                        if popularNewsCell.tag == indexPath.row+1 {
-                            popularNewsCell.newsIcon.image = UIImage(data: data)
+                if let urlImage = weakSelf.viewModel.newsDataModel.articles[indexPath.row+1].urlToImage, let url = URL(string: urlImage) {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            // Create Image and Update Image View
+                            if popularNewsCell.tag == indexPath.row+1 {
+                                popularNewsCell.newsIcon.image = UIImage(data: data)
+                            }
                         }
                     }
                 }
@@ -95,11 +112,11 @@ extension HomeScreenViewController {
         return UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailNewsViewController") as? DetailNewsViewController else {
             return
         }
@@ -115,6 +132,7 @@ extension HomeScreenViewController {
 }
 
 extension UIImageView {
+    
     func loadFrom(URLAddress: String) {
         let url = URL(string: URLAddress)!
         DispatchQueue.global().async {
@@ -126,6 +144,18 @@ extension UIImageView {
                     weakSelf.image = UIImage(data: data)
                 }
             }
+        }
+    }
+}
+extension UIButton {
+    
+    /// `IBInspectable` borderWidth for UIView.
+    @IBInspectable var cornerRadius: CGFloat  {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
         }
     }
 }
